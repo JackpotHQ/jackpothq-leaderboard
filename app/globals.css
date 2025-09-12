@@ -1,0 +1,30 @@
+
+@import "tailwindcss";
+:root{--bg-1:#0b0610;--bg-2:#1b0e2b;--accent:#8b3bff;--accent-2:#6d2bff;--muted:#a99bd1;}
+html,body{height:100%}
+body{color:#d3c6f1;background:radial-gradient(1200px 500px at 10% 10%, rgba(107,48,173,0.12), transparent),
+radial-gradient(800px 500px at 90% 90%, rgba(63,22,91,0.12), transparent),
+linear-gradient(180deg, var(--bg-1), var(--bg-2));-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;}
+.container-max{max-width:1200px;margin-left:auto;margin-right:auto;padding-left:1.75rem;padding-right:1.75rem}
+.kick-mask {
+  -webkit-mask-image: url(/kick-logo.svg);
+  mask-image: url(/kick-logo.svg);
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-size: contain;
+  mask-size: contain;
+  -webkit-mask-position: center;
+  mask-position: center;
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  min-height: 100vh; /* at least viewport height */
+  background: radial-gradient(1200px 500px at 10% 10%, rgba(107,48,173,0.12), transparent),
+              radial-gradient(800px 500px at 90% 90%, rgba(63,22,91,0.12), transparent),
+              linear-gradient(180deg, var(--bg-1), var(--bg-2));
+  background-attachment: fixed; /* so it sticks even when you scroll */
+}

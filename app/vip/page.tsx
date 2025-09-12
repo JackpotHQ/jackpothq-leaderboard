@@ -1,0 +1,1 @@
+export default function VIPPage(){return(<section className='py-16'><h1 className='text-[46px] font-extrabold tracking-wide' style={{fontFamily:'Orbitron, sans-serif', color:'var(--accent)'}}>VIP</h1><p className='text-[color:var(--muted)]'>Coming soon.</p></section>)}
