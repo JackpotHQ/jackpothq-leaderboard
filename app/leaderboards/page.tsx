@@ -34,6 +34,34 @@ function useCountdown(endIso: string) {
   return { label: compact };
 }
 
+// --- custom period window (env override) ---
+function currentPeriodWindowUtc() {
+  const sEnv = process.env.NEXT_PUBLIC_PERIOD_START;
+  const eEnv = process.env.NEXT_PUBLIC_PERIOD_END;
+
+  const parse = (v?: string | null) => {
+    if (!v) return null;
+    const t = Date.parse(v);
+    return Number.isNaN(t) ? null : new Date(t);
+  };
+
+  const s = parse(sEnv);
+  const e = parse(eEnv);
+
+  if (s && e && e.getTime() > s.getTime()) {
+    return { start: s.toISOString(), end: e.toISOString() };
+  }
+
+  // fallback to weekly window
+  const now = new Date();
+  const day = now.getUTCDay() || 7; // Monday = 1
+  const start = new Date(Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate() - (day - 1)));
+  const end = new Date(start);
+  end.setUTCDate(start.getUTCDate() + 7);
+  return { start: start.toISOString(), end: end.toISOString() };
+}
+
+
 export default function LeaderboardsPage() {
   const [showRules, setShowRules] = useState(false);
   const [rows, setRows] = useState<Row[]>([]);
@@ -41,7 +69,7 @@ export default function LeaderboardsPage() {
   const [loading, setLoading] = useState(true);
 
   // Weekly UTC window
-  const { start, end } = currentWeekWindowUtc();
+  const { start, end } = currentPeriodWindowUtc();
   const { label: countdownLabel } = useCountdown(end);
 
   // Prizes from env
