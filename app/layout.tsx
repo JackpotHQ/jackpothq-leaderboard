@@ -3,7 +3,7 @@ import "./globals.css";
 import type { ReactNode } from "react";
 import Navbar from "@/components/Navbar";
 
-export const metadata = { title: "Rainbet Leaderboard", description: "Exclusive wager races — JackpotHQ" };
+export const metadata = { title: "JackpotHQ Leaderboards", description: "Exclusive wager races — JackpotHQ" };
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
